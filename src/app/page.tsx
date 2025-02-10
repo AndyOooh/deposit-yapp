@@ -13,6 +13,7 @@ export default function Home() {
   const [error, setError] = useState<string | null>(null);
   const [expandedMethod, setExpandedMethod] = useState<string | null>(null);
   const [isMobile, setIsMobile] = useState(false);
+  console.log("🚀  isMobile:", isMobile);
 
   useEffect(() => {
     const decodeToken = () => {
@@ -42,7 +43,11 @@ export default function Home() {
   const availableFundingConfigs = ALL_FUNDING_CONFIGS.filter(config => (isMobile ? config.supportsMobile : config.supportsExtension));
 
   const handleMethodDeepLink = async (method: FundingConfig) => {
-    const deepLink = isMobile ? method.deepLink.mobile : method.deepLink.web;
+    const mobileDeepLink = typeof method.deepLink.mobile === "function" ? method.deepLink.mobile(ensName) : method.deepLink.mobile;
+    alert(mobileDeepLink);
+    console.log('🚀  mobileDeepLink:', mobileDeepLink);
+
+    const deepLink = isMobile ? mobileDeepLink : method.deepLink.web;
     if (!deepLink) return;
 
     if (isMobile) {

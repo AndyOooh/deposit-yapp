@@ -7,7 +7,9 @@ export interface BaseFundingConfig {
   supportsMobile: boolean;
   supportedChains: string[];
   deepLink: {
-    mobile: string;
+    // mobile: string | ((ensName: string) => string);
+    mobile: string | ((ensName: string) => string);
+    // mobile: string;
     web?: string;
   };
 }
@@ -43,8 +45,7 @@ export const WALLET_CONFIGS: WalletConfig[] = [
     supportsExtension: true,
     supportsMobile: true,
     deepLink: {
-      // mobile: "dapp://yodl.me/andyoee.yodl.eth?amount=10&currency=THB",
-      mobile: "dapp://",
+      mobile: (ensName: string) => `dapp://yodl.me/${ensName}`,
       web: "https://metamask.app.link/",
     },
     supportedChains: ["ethereum", "polygon", "arbitrum", "optimism", "base"],
@@ -58,11 +59,9 @@ export const WALLET_CONFIGS: WalletConfig[] = [
     supportsExtension: true,
     supportsMobile: true,
     deepLink: {
-      mobile: "https://phantom.app/ul/browse/",
-      // mobile: `https://phantom.app/ul/browse/${encodeURIComponent(
-      //   "https://yodl.me/andyoee.yodl.eth?amount=15&currency=THB"
-      // )}?ref=${encodeURIComponent("yodl.me")}`,
-      web: "https://phantom.app/ul/",
+      mobile: (ensName: string) =>
+        `https://phantom.app/ul/browse/${encodeURIComponent(`https://yodl.me/${ensName}`)}?ref=${encodeURIComponent("yodl.me")}`,
+      web: "https://phantom.com/download",
     },
     supportedChains: ["ethereum", "polygon", "arbitrum", "optimism", "base"],
   },
@@ -75,8 +74,7 @@ export const WALLET_CONFIGS: WalletConfig[] = [
     supportsExtension: false,
     supportsMobile: true,
     deepLink: {
-      // mobile: "https://link.trustwallet.com/open_url?url=yodl.me/andyoee.yodl.eth?amount=10&currency=THB",
-      mobile: "https://link.trustwallet.com/open_url?url=",
+      mobile: (ensName: string) => `https://link.trustwallet.com/open_url?url=yodl.me/${ensName}`,
       web: "https://link.trustwallet.com/",
     },
     supportedChains: ["ethereum", "polygon", "arbitrum", "optimism", "base"],
@@ -90,8 +88,7 @@ export const WALLET_CONFIGS: WalletConfig[] = [
     supportsExtension: true,
     supportsMobile: true,
     deepLink: {
-      // mobile: "https://go.cb-w.com/dapp?cb_url=yodl.me/andyoee.yodl.eth?amount=22&currency=THB",
-      mobile: "https://go.cb-w.com/dapp?cb_url=",
+      mobile: (ensName: string) => `https://go.cb-w.com/dapp?cb_url=yodl.me/${ensName}`,
       web: "https://wallet.coinbase.com/",
     },
     supportedChains: ["ethereum", "polygon", "arbitrum", "optimism", "base"],
