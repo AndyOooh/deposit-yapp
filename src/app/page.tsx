@@ -44,7 +44,7 @@ export default function Home() {
 
   const handleMethodDeepLink = async (method: FundingConfig) => {
     const mobileDeepLink = typeof method.deepLink.mobile === "function" ? method.deepLink.mobile(ensName) : method.deepLink.mobile;
-    alert(mobileDeepLink);
+    // alert(mobileDeepLink);
     console.log('🚀  mobileDeepLink:', mobileDeepLink);
 
     const deepLink = isMobile ? mobileDeepLink : method.deepLink.web;
