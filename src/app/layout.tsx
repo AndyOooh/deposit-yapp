@@ -27,7 +27,7 @@ export default function RootLayout({
   return (
     <html lang='en'>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        <Theme accentColor='indigo' hasBackground={false} panelBackground='translucent' radius='small' appearance='dark'>
+        <Theme accentColor='iris' hasBackground={false} panelBackground='translucent' radius='small' appearance='dark'>
           {children}
         </Theme>
       </body>
