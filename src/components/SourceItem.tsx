@@ -1,8 +1,7 @@
+import { useState } from "react";
 import { Box, Flex, Text, Button } from "@radix-ui/themes";
 import { FiChevronDown, FiChevronRight } from "react-icons/fi";
 import { Source } from "@/constants/sources";
-import { useState } from "react";
-import Image from "next/image";
 
 type SourceItemProps = {
   source: Source;
@@ -24,7 +23,6 @@ export const SourceItem = ({ source, isMobile, ensOrAddress }: SourceItemProps) 
       <Flex direction='column' gap='2' p='2' className='cursor-pointer' onClick={() => setIsExpanded(!isExpanded)}>
         <Flex align='center' gap='2'>
           {isExpanded ? <FiChevronDown /> : <FiChevronRight />}
-          {/* <Image src={source.icon} alt={`${source.name} icon`} width={24} height={24} /> */}
           <img src={source.icon} alt={`${source.name} icon`} width={24} height={24} />
           <Text weight='bold'>{source.name}</Text>
         </Flex>
