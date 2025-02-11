@@ -16,7 +16,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Yapp | Deposit",
-  description: "Yodl mini-app (Yapp). Conect with the Yodl Telegram Bot",
+  description: "Yodl mini-app (Yapp). Fund your Yodl wallet",
 };
 
 export default function RootLayout({
