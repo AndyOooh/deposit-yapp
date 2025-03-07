@@ -1,3 +1,5 @@
+"use client";
+
 import { useState } from "react";
 import { Box, Flex, Text, Button, Link } from "@radix-ui/themes";
 import { FiChevronDown, FiChevronRight } from "react-icons/fi";
@@ -18,11 +20,11 @@ export const SourceItem = ({ source, isMobile, ensOrAddress }: SourceItemProps) 
   //   return isMobile ? (window.location.href = link) : window.open(link, "_blank");
   // };
 
-  const getLink = (source: Source) => {
-    const link = isMobile ? (typeof source.link.mobile === "function" ? source.link.mobile(ensOrAddress) : source.link.mobile) : source.link.web;
-    console.log("🚀 link:", link);
-    return link;
-  };
+  // const getLink = (source: Source) => {
+  //   const link = isMobile ? (typeof source.link.mobile === "function" ? source.link.mobile(ensOrAddress) : source.link.mobile) : source.link.web;
+  //   console.log("🚀 link:", link);
+  //   return link;
+  // };
 
   //   <Button size='1' asChild>
   //   <Link href={isMobile ? REVOLUT_UNIVERSAL_LINK_MOBILE : REVOLUT_UNIVERSAL_LINK} target='_blank'>
