@@ -38,7 +38,7 @@ export default function Home() {
         ) : (
           <>
             <Flex direction='column' gap='2' align='center'>
-              <Heading>Fund your account</Heading>
+              <Heading>Fund your account 🚀</Heading>
               <Heading size='2'>
                 Transfer assets to{" "}
                 <Text size='4' color='iris' className='fontFamily-mono'>

@@ -1,6 +1,6 @@
 import { Card, Heading, Text, Flex } from "@radix-ui/themes";
 import { SOURCES, SOURCE_HEADERS } from "@/constants/sources";
-import { SourceItem } from "./SourceItem";
+import { SourceItem } from "./SourceItem_new";
 
 type SourceCardProps = {
   sourceType: keyof typeof SOURCE_HEADERS;
