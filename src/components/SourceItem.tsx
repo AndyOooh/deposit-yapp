@@ -19,7 +19,9 @@ export const SourceItem = ({ source, isMobile, ensOrAddress }: SourceItemProps) 
   // };
 
   const getLink = (source: Source) => {
-    return isMobile ? (typeof source.link.mobile === "function" ? source.link.mobile(ensOrAddress) : source.link.mobile) : source.link.web;
+    const link = isMobile ? (typeof source.link.mobile === "function" ? source.link.mobile(ensOrAddress) : source.link.mobile) : source.link.web;
+    console.log('🚀 link:', link);
+    return link;
   };
 
   //   <Button size='1' asChild>
@@ -42,7 +44,8 @@ export const SourceItem = ({ source, isMobile, ensOrAddress }: SourceItemProps) 
             <Text size='2' color='gray'>
               {source.description}
             </Text>
-            <Link href={getLink(source)} target='_blank'>
+            {/* <Link href={getLink(source)} target='_blank'> */}
+            <Link href={source.link.mobile as string} target='_blank'>
               {isMobile ? "Open App" : "Connect"}
             </Link>
           </Flex>
