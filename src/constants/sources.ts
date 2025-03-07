@@ -131,12 +131,10 @@ export const SOURCES: SourceConfig = {
       supportsExtension: false,
       supportsMobile: true,
       link: {
-        // mobile: "revolut://app",
-        // web: "https://app.revolut.com/crypto",
-        // const REVOLUT_UNIVERSAL_LINK = "https://revolut.com/crypto";
-        // mobile: "https://revolut.me",
-        mobile: "https://revolut.com/app",
-        web: "https://revolut.me",
+        mobile: "revolut://app/crypto",
+        web: "https://app.revolut.com/crypto",
+        // mobile: "https://revolut.com/app",
+        // web: "https://revolut.me",
       },
     },
     {

@@ -14,23 +14,10 @@ type SourceItemProps = {
 export const SourceItem = ({ source, isMobile, ensOrAddress }: SourceItemProps) => {
   const [isExpanded, setIsExpanded] = useState(false);
 
-  // const handleClickLink = (source: Source) => {
-  //   const link = isMobile ? (typeof source.link.mobile === "function" ? source.link.mobile(ensOrAddress) : source.link.mobile) : source.link.web;
-  //   if (!link) return;
-  //   return isMobile ? (window.location.href = link) : window.open(link, "_blank");
-  // };
-
   const getLink = (source: Source) => {
     const link = isMobile ? (typeof source.link.mobile === "function" ? source.link.mobile(ensOrAddress) : source.link.mobile) : source.link.web;
-    console.log("🚀 link:", link);
     return link;
   };
-
-  //   <Button size='1' asChild>
-  //   <Link href={isMobile ? REVOLUT_UNIVERSAL_LINK_MOBILE : REVOLUT_UNIVERSAL_LINK} target='_blank'>
-  //     Open App
-  //   </Link>
-  // </Button>
 
   return (
     <Box>
@@ -46,18 +33,14 @@ export const SourceItem = ({ source, isMobile, ensOrAddress }: SourceItemProps) 
             <Text size='2' color='gray'>
               {source.description}
             </Text>
-            <Link href={getLink(source)} target='_blank'>
-              {/* <Link href='https://revolut.com/app' target='_blank'> */}
-              {isMobile ? "Open App" : "Connect"}
-            </Link>
+            <Button>
+              <Link href={getLink(source)} target='_blank'>
+                {isMobile ? "Open App" : "Connect"}
+              </Link>
+            </Button>
           </Flex>
         )}
       </Flex>
     </Box>
   );
 };
-
-// const REVOLUT_UNIVERSAL_LINK_MOBILE = "https://revolut.com/app";
-// <Link href={isMobile ? REVOLUT_UNIVERSAL_LINK_MOBILE : REVOLUT_UNIVERSAL_LINK} target='_blank'>
-// Open App
-// </Link>
