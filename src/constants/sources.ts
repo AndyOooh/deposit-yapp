@@ -95,19 +95,6 @@ export const SOURCES: SourceConfig = {
       },
     },
     {
-      id: "mexc",
-      name: "MEXC",
-      icon: "/icons/mexc-icon.svg",
-      description: "Send tokens from your MEXC account",
-      sourceType: "exchange",
-      supportsExtension: false,
-      supportsMobile: true,
-      link: {
-        mobile: "https://www.mexc.co/download",
-        web: "https://www.mexc.com/assets/withdraw",
-      },
-    },
-    {
       id: "bybit",
       name: "Bybit",
       icon: "/icons/bybit-icon.png",

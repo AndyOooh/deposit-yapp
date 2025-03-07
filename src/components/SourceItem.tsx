@@ -1,5 +1,3 @@
-"use client";
-
 import { useState } from "react";
 import { Box, Flex, Text, Button, Link } from "@radix-ui/themes";
 import { FiChevronDown, FiChevronRight } from "react-icons/fi";
@@ -33,7 +31,7 @@ export const SourceItem = ({ source, isMobile, ensOrAddress }: SourceItemProps) 
             <Text size='2' color='gray'>
               {source.description}
             </Text>
-            <Button>
+            <Button asChild>
               <Link href={getLink(source)} target='_blank'>
                 {isMobile ? "Open App" : "Connect"}
               </Link>
