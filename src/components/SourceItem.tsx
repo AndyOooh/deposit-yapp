@@ -22,6 +22,12 @@ export const SourceItem = ({ source, isMobile, ensOrAddress }: SourceItemProps) 
     return isMobile ? (typeof source.link.mobile === "function" ? source.link.mobile(ensOrAddress) : source.link.mobile) : source.link.web;
   };
 
+  //   <Button size='1' asChild>
+  //   <Link href={isMobile ? REVOLUT_UNIVERSAL_LINK_MOBILE : REVOLUT_UNIVERSAL_LINK} target='_blank'>
+  //     Open App
+  //   </Link>
+  // </Button>
+
   return (
     <Box>
       <Flex direction='column' gap='2' p='2' className='cursor-pointer' onClick={() => setIsExpanded(!isExpanded)}>
@@ -36,7 +42,9 @@ export const SourceItem = ({ source, isMobile, ensOrAddress }: SourceItemProps) 
             <Text size='2' color='gray'>
               {source.description}
             </Text>
-            <Link href={getLink(source)}>{isMobile ? "Open App" : "Connect"}</Link>
+            <Link href={getLink(source)} target='_blank'>
+              {isMobile ? "Open App" : "Connect"}
+            </Link>
           </Flex>
         )}
       </Flex>
