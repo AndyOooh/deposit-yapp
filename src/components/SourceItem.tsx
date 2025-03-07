@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Box, Flex, Text, Button } from "@radix-ui/themes";
+import { Box, Flex, Text, Button, Link } from "@radix-ui/themes";
 import { FiChevronDown, FiChevronRight } from "react-icons/fi";
 import { Source } from "@/constants/sources";
 
@@ -12,10 +12,14 @@ type SourceItemProps = {
 export const SourceItem = ({ source, isMobile, ensOrAddress }: SourceItemProps) => {
   const [isExpanded, setIsExpanded] = useState(false);
 
-  const handleClickLink = (source: Source) => {
-    const link = isMobile ? (typeof source.link.mobile === "function" ? source.link.mobile(ensOrAddress) : source.link.mobile) : source.link.web;
-    if (!link) return;
-    return isMobile ? (window.location.href = link) : window.open(link, "_blank");
+  // const handleClickLink = (source: Source) => {
+  //   const link = isMobile ? (typeof source.link.mobile === "function" ? source.link.mobile(ensOrAddress) : source.link.mobile) : source.link.web;
+  //   if (!link) return;
+  //   return isMobile ? (window.location.href = link) : window.open(link, "_blank");
+  // };
+
+  const getLink = (source: Source) => {
+    return isMobile ? (typeof source.link.mobile === "function" ? source.link.mobile(ensOrAddress) : source.link.mobile) : source.link.web;
   };
 
   return (
@@ -32,11 +36,7 @@ export const SourceItem = ({ source, isMobile, ensOrAddress }: SourceItemProps) 
             <Text size='2' color='gray'>
               {source.description}
             </Text>
-            <Flex direction='column' gap='2'>
-              <Button onClick={() => handleClickLink(source)} size='2'>
-                {isMobile ? "Open App" : "Connect"}
-              </Button>
-            </Flex>
+            <Link href={getLink(source)}>{isMobile ? "Open App" : "Connect"}</Link>
           </Flex>
         )}
       </Flex>
