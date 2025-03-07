@@ -20,7 +20,7 @@ export const SourceItem = ({ source, isMobile, ensOrAddress }: SourceItemProps) 
 
   const getLink = (source: Source) => {
     const link = isMobile ? (typeof source.link.mobile === "function" ? source.link.mobile(ensOrAddress) : source.link.mobile) : source.link.web;
-    console.log('🚀 link:', link);
+    console.log("🚀 link:", link);
     return link;
   };
 
@@ -45,7 +45,7 @@ export const SourceItem = ({ source, isMobile, ensOrAddress }: SourceItemProps) 
               {source.description}
             </Text>
             {/* <Link href={getLink(source)} target='_blank'> */}
-            <Link href={source.link.mobile as string} target='_blank'>
+            <Link href='https://revolut.com/app' target='_blank'>
               {isMobile ? "Open App" : "Connect"}
             </Link>
           </Flex>
@@ -54,3 +54,8 @@ export const SourceItem = ({ source, isMobile, ensOrAddress }: SourceItemProps) 
     </Box>
   );
 };
+
+// const REVOLUT_UNIVERSAL_LINK_MOBILE = "https://revolut.com/app";
+// <Link href={isMobile ? REVOLUT_UNIVERSAL_LINK_MOBILE : REVOLUT_UNIVERSAL_LINK} target='_blank'>
+// Open App
+// </Link>
