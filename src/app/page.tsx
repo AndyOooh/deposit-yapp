@@ -54,7 +54,7 @@ export default function Home() {
                       <FiInfo />
                     </Callout.Icon>
                     <Callout.Text>
-                      This yapp requires an ENS or wallet address. Please connect your wallet in the yodl app and come back.
+                      This yapp requires an ENS or wallet address. Please connect your wallet in the Yodl app and come back.
                     </Callout.Text>
                   </Callout.Root>
                 </Flex>
