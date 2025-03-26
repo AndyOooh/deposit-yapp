@@ -1,7 +1,6 @@
 "use client";
 
 import { Container, Heading, Text, Flex, Callout } from "@radix-ui/themes";
-import { MdInfoOutline } from "react-icons/md";
 import { FiInfo } from "react-icons/fi";
 import { useEffect, useState } from "react";
 import { UAParser } from "ua-parser-js";
@@ -9,12 +8,12 @@ import { SOURCE_HEADERS } from "@/constants/sources";
 import { truncateAddress, typedKeys } from "@/utils/typeUtils";
 import { SourceCard } from "@/components/SourceCard";
 import { sdk } from "@/lib/sdk";
-import { UserContext1 } from "./types";
+import { UserContext } from "@yodlpay/yapp-sdk/types";
 
 export default function Home() {
   const [error, setError] = useState<string | null>(null);
   const [isMobile, setIsMobile] = useState(false);
-  const [userContext, setUserContext] = useState<UserContext1 | null>(null);
+  const [userContext, setUserContext] = useState<UserContext | null>(null);
 
   useEffect(() => {
     const getUserContext = async () => {
