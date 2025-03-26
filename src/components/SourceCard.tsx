@@ -5,7 +5,7 @@ import { SourceItem } from "./SourceItem";
 type SourceCardProps = {
   sourceType: keyof typeof SOURCE_HEADERS;
   isMobile: boolean;
-  ensOrAddress: string;
+  ensOrAddress?: string;
 };
 
 export const SourceCard = ({ sourceType, isMobile, ensOrAddress }: SourceCardProps) => {
@@ -23,7 +23,7 @@ export const SourceCard = ({ sourceType, isMobile, ensOrAddress }: SourceCardPro
       </Text>
       <Flex direction='column' gap='4'>
         {sourcesForType.map(source => (
-          <SourceItem key={source.id} source={source} isMobile={isMobile} ensOrAddress={ensOrAddress} />
+          <SourceItem key={source.id} source={source} isMobile={isMobile} ensOrAddress={ensOrAddress!} />
         ))}
       </Flex>
     </Card>
