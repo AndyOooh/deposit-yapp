@@ -1,31 +1,33 @@
 "use client";
 
-import { Container, Heading, Text, Flex } from "@radix-ui/themes";
+import { Container, Heading, Text, Flex, Callout } from "@radix-ui/themes";
+import { MdInfoOutline } from "react-icons/md";
+import { FiInfo } from "react-icons/fi";
 import { useEffect, useState } from "react";
 import { UAParser } from "ua-parser-js";
 import { SOURCE_HEADERS } from "@/constants/sources";
-import { typedKeys } from "@/utils/typeUtils";
+import { truncateAddress, typedKeys } from "@/utils/typeUtils";
 import { SourceCard } from "@/components/SourceCard";
+import { sdk } from "@/lib/sdk";
+import { UserContext1 } from "./types";
 
 export default function Home() {
-  const [ensOrAddress, setEnsOrAddress] = useState<string>("your-ens.eth");
   const [error, setError] = useState<string | null>(null);
   const [isMobile, setIsMobile] = useState(false);
+  const [userContext, setUserContext] = useState<UserContext1 | null>(null);
 
   useEffect(() => {
-    const decodeToken = () => {
+    const getUserContext = async () => {
       try {
-        const params = new URLSearchParams(window.location.search);
-        const jwtFromParams = params.get("jwt");
-        if (!jwtFromParams) return;
-
-        const payload = JSON.parse(atob(jwtFromParams));
-        setEnsOrAddress(payload.ensName);
-      } catch (e) {
-        setError("Invalid token format");
+        const userContext = await sdk.getUserContext();
+        setUserContext(userContext);
+        console.log("🚀 userContext:", userContext);
+      } catch (error) {
+        console.error("Error getting user context:", error);
       }
     };
-    decodeToken();
+    getUserContext();
+
     const parser = new UAParser();
     setIsMobile(parser.getDevice().type === "mobile");
   }, []);
@@ -39,17 +41,35 @@ export default function Home() {
           <>
             <Flex direction='column' gap='2' align='center'>
               <Heading>Fund your account</Heading>
-              <Heading size='2'>
-                Transfer assets to{" "}
-                <Text size='4' color='iris' className='fontFamily-mono'>
-                  {ensOrAddress}
-                </Text>
-              </Heading>
+              {userContext ? (
+                <Heading size='2'>
+                  Transfer assets to{" "}
+                  <Text size='4' color='iris' className='fontFamily-mono'>
+                    {userContext.primaryEnsName || truncateAddress(userContext.address)}
+                  </Text>
+                </Heading>
+              ) : (
+                <Flex justify='center' align='center' px='4' className='bg-transparent'>
+                  <Callout.Root size='2'>
+                    <Callout.Icon>
+                      <FiInfo />
+                    </Callout.Icon>
+                    <Callout.Text>
+                      This yapp requires an ENS or wallet address. Please connect your wallet in the yodl app and come back.
+                    </Callout.Text>
+                  </Callout.Root>
+                </Flex>
+              )}
             </Flex>
 
             <Flex direction='column' gap='4' width='100%' maxWidth='400px'>
               {typedKeys(SOURCE_HEADERS).map(sourceType => (
-                <SourceCard key={sourceType} sourceType={sourceType} isMobile={isMobile} ensOrAddress={ensOrAddress} />
+                <SourceCard
+                  key={sourceType}
+                  sourceType={sourceType}
+                  isMobile={isMobile}
+                  ensOrAddress={userContext?.primaryEnsName || userContext?.address}
+                />
               ))}
             </Flex>
           </>

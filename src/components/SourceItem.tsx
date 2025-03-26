@@ -31,7 +31,7 @@ export const SourceItem = ({ source, isMobile, ensOrAddress }: SourceItemProps) 
             <Text size='2' color='gray'>
               {source.description}
             </Text>
-            <Button asChild>
+            <Button asChild disabled={!ensOrAddress}>
               <Link href={getLink(source)} target='_blank'>
                 {isMobile ? "Open App" : "Connect"}
               </Link>
