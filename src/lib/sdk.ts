@@ -1,7 +1,7 @@
 import YappSDK from "@yodlpay/yapp-sdk";
 
 const devOrigin = "http://localhost:3001/";
-const prodOrigin = "https://dapp-git-sb-add-user-context-request-yodl.vercel.app/";
+const prodOrigin = "https://yodl.me/";
 
 export const sdk = new YappSDK({
   ensName: "deposit-yapp.yodl.eth",
