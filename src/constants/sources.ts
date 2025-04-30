@@ -1,4 +1,5 @@
-export type SourceType = "wallet" | "exchange" | "other";
+export type SourceType = "wallet";
+// | "exchange" | "other";
 
 export type Source = {
   id: string;
@@ -20,8 +21,8 @@ export type SourceConfig = {
 
 export const SOURCE_HEADERS: Record<SourceType, string> = {
   wallet: "Transfer from a wallet.",
-  exchange: "Transfer from a centralized exchange.",
-  other: "Transfer from other apps.",
+  // exchange: "Transfer from a centralized exchange.",
+  // other: "Transfer from other apps.",
 };
 
 export const SOURCES: SourceConfig = {
@@ -80,62 +81,62 @@ export const SOURCES: SourceConfig = {
       },
     },
   ],
-  exchange: [
-    {
-      id: "binance",
-      name: "Binance",
-      icon: "/icons/binance-icon.svg",
-      description: "Send funds from your Binance account",
-      sourceType: "exchange",
-      supportsExtension: false,
-      supportsMobile: true,
-      link: {
-        mobile: "bnc://app.binance.com/accounts/spot",
-        web: "https://www.binance.com/en/my/wallet/account/main",
-      },
-    },
-    {
-      id: "bybit",
-      name: "Bybit",
-      icon: "/icons/bybit-icon.png",
-      description: "Send funds from your Bybit account",
-      sourceType: "exchange",
-      supportsExtension: false,
-      supportsMobile: true,
-      link: {
-        mobile: "https://bybit.onelink.me/EhY6/u3l3x25k",
-        web: "https://www.bybit.com/app/assets/spot",
-      },
-    },
-  ],
-  other: [
-    {
-      id: "revolut",
-      name: "Revolut",
-      icon: "/icons/revolut-icon.svg",
-      description: "Send funds from your Revolut account",
-      sourceType: "other",
-      supportsExtension: false,
-      supportsMobile: true,
-      link: {
-        mobile: "revolut://app/crypto",
-        web: "https://app.revolut.com/crypto",
-        // mobile: "https://revolut.com/app",
-        // web: "https://revolut.me",
-      },
-    },
-    {
-      id: "paypal",
-      name: "PayPal",
-      icon: "/icons/paypal-icon.svg",
-      description: "Send funds from your PayPal account",
-      sourceType: "other",
-      supportsExtension: false,
-      supportsMobile: true,
-      link: {
-        mobile: "paypal://crypto",
-        web: "https://www.paypal.com/myaccount/crypto",
-      },
-    },
-  ],
+  // exchange: [
+  //   {
+  //     id: "binance",
+  //     name: "Binance",
+  //     icon: "/icons/binance-icon.svg",
+  //     description: "Send funds from your Binance account",
+  //     sourceType: "exchange",
+  //     supportsExtension: false,
+  //     supportsMobile: true,
+  //     link: {
+  //       mobile: "bnc://app.binance.com/accounts/spot",
+  //       web: "https://www.binance.com/en/my/wallet/account/main",
+  //     },
+  //   },
+  //   {
+  //     id: "bybit",
+  //     name: "Bybit",
+  //     icon: "/icons/bybit-icon.png",
+  //     description: "Send funds from your Bybit account",
+  //     sourceType: "exchange",
+  //     supportsExtension: false,
+  //     supportsMobile: true,
+  //     link: {
+  //       mobile: "https://bybit.onelink.me/EhY6/u3l3x25k",
+  //       web: "https://www.bybit.com/app/assets/spot",
+  //     },
+  //   },
+  // ],
+  // other: [
+  //   {
+  //     id: "revolut",
+  //     name: "Revolut",
+  //     icon: "/icons/revolut-icon.svg",
+  //     description: "Send funds from your Revolut account",
+  //     sourceType: "other",
+  //     supportsExtension: false,
+  //     supportsMobile: true,
+  //     link: {
+  //       mobile: "revolut://app/crypto",
+  //       web: "https://app.revolut.com/crypto",
+  //       // mobile: "https://revolut.com/app",
+  //       // web: "https://revolut.me",
+  //     },
+  //   },
+  //   {
+  //     id: "paypal",
+  //     name: "PayPal",
+  //     icon: "/icons/paypal-icon.svg",
+  //     description: "Send funds from your PayPal account",
+  //     sourceType: "other",
+  //     supportsExtension: false,
+  //     supportsMobile: true,
+  //     link: {
+  //       mobile: "paypal://crypto",
+  //       web: "https://www.paypal.com/myaccount/crypto",
+  //     },
+  //   },
+  // ],
 };

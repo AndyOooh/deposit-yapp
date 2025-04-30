@@ -1,6 +1,6 @@
 import YappSDK from "@yodlpay/yapp-sdk";
 
-const devOrigin = "http://localhost:3001/";
+const devOrigin = "http://localhost:3000/";
 const prodOrigin = "https://yodl.me/";
 
 export const sdk = new YappSDK({
